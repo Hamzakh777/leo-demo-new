@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import * as sdk from "@aleohq/sdk";
 
 await sdk.initializeWasm();
+
 export const useAleoWASM = () => {
     const [aleoInstance, setAleoInstance] = useState(null);
 

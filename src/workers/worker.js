@@ -59,40 +59,36 @@ self.addEventListener("message", (ev) => {
 
         // Execute the function locally
         let response = await programManager.executeOffline(
-                localProgram,
-                aleoFunction,
-                inputs,
-                true,
-                imports,
-                keyParams,
-                undefined,
-                undefined,
-                aleo.PrivateKey.from_string(privateKey)
-            );
+          localProgram,
+          aleoFunction,
+          inputs,
+          true,
+          imports,
+          keyParams,
+          undefined,
+          undefined,
+          aleo.PrivateKey.from_string(privateKey)
+        );
 
-            // Return the outputs to the main thread
-            console.log(`Web worker: Local execution completed in ${performance.now() - startTime} ms`);
-            let execution = response.getExecution();
-            if (execution) {
-                aleo.verifyFunctionExecution(execution, keyProvider.getKeys(cacheKey)[1], program, "hello");
-                execution = execution.toString();
-                console.log("Execution verified successfully: " + execution);
-            } else {
-                execution = "";
-            }
+        // Return the outputs to the main thread
+        console.log(`Web worker: Local execution completed in ${performance.now() - startTime} ms`);
+        let execution = response.getExecution();
 
-            self.postMessage({
-                type: "OFFLINE_EXECUTION_COMPLETED",
-                outputs: {execution: execution}
-            });
-        } catch (error) {
-            console.error(error);
-            self.postMessage({
-                type: "ERROR",
-                errorMessage: error.toString(),
-            });
-        }
-      })();
+        self.postMessage({
+          type: "OFFLINE_EXECUTION_COMPLETED",
+          outputs: {
+            execution: execution.toString(),
+            verifyingKey: keyProvider.getKeys(cacheKey)[1].toString()
+          }
+        });
+      } catch (error) {
+        console.error(error);
+        self.postMessage({
+          type: "ERROR",
+          errorMessage: error.toString(),
+        });
+      }
+    })();
   }
 });
 

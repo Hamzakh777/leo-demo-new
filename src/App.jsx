@@ -3,6 +3,7 @@ import { useAleoWASM } from "./aleo-wasm-hook";
 import Issuer from "./components/Issuer";
 import Holder from "./components/Holder";
 import Verifier from "./components/Verifier";
+import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 
 const HELLO_PROGRAM = `
 program helloworld.aleo;
@@ -12,8 +13,9 @@ function hello:
     assert.eq r0 r1;
     add r0 r1 into r2;
     output r2 as u32.private;
-
 `;
+
+const createVerifierWorker = createWorkerFactory(() => import('./workers/verifier'));
 
 function App() {
     const aleo = useAleoWASM();
@@ -32,6 +34,7 @@ function App() {
     });
 
     const [worker, setWorker] = useState(null);
+    const verifierWorker = useWorker(createVerifierWorker);
 
     const setIssuer = (issuerValue) => {
         setState(prev => ({ ...prev, issuer: issuerValue }));
@@ -72,7 +75,6 @@ function App() {
     const setIsIssued = () => {
         setState(prev => ({ ...prev, verified: true }));
     };
-    
 
     const spawnWorker = () => new Worker(new URL("workers/worker.js", import.meta.url), { type: "module" });
 
@@ -91,9 +93,15 @@ function App() {
             type: "ALEO_EXECUTE_PROGRAM_LOCAL",
             localProgram: HELLO_PROGRAM,
             aleoFunction: "hello",
-            inputs: ["2u32", "5u32"],
+            inputs: ["2u32", "2u32"],
             privateKey: state.account.to_string(),
         });
+        const { outputs: {
+            execution, verifyingKey
+        } } = response;
+        const webWorkerMessage = await verifierWorker.verify(execution, verifyingKey, HELLO_PROGRAM, 'hello');
+        console.log('verification response:', webWorkerMessage)
+
         setState(prev => ({ ...prev, loading: false, result: response}));
         if (response === 10){
             setState(prev => ({ ...prev, verified: true }));

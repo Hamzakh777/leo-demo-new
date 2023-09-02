@@ -1,0 +1,67 @@
+.moduleWrapper {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 350px;
+    margin: 40px auto;
+    text-align: center;
+}
+.button {
+    padding: 15px 25px;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.cardHeader {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.credentialDetails {
+    margin: 20px 0;
+}
+
+.credentialDetail {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.label {
+    color: #777;
+    margin-right: 10px;
+}
+
+.value {
+    font-weight: bold;
+}
+
+.button {
+    padding: 15px 25px;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.buttonutton:hover {
+    background-color: #0056b3;
+}
+
+.actionButtonWrapper {
+    margin-top: 20px;
+}

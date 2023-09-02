@@ -1,0 +1,159 @@
+/* Global Variables */
+:root {
+  --primary-color: #007aff;
+  --primary-dark: #0051a2;
+  --background-color: #f5f6fa;
+  --font-color: #2c3e50;
+  --neutral-light: #e0e0e0;
+  --neutral-dark: #242424;
+  --border-color: #d1d1d1;
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--font-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Module Wrapper */
+.module-wrapper {
+  width: 800px;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Interaction Panel */
+.interaction-panel {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--background-color);
+}
+
+/* Adjust logo for the module */
+.logo {
+  max-width: 40px;
+  margin: 0 15px; /* Combined the margin from both the defined .logo styles */
+}
+
+.container {
+  max-width: 1140px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.copyable-address {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px; /* Adjust as needed */
+}
+
+
+.header,
+.footer {
+  max-width: 1140px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.footer {
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.9em;
+  margin-top: 60px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.button {
+  padding: 12px 30px;
+  border: none;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  background-color: var(--neutral-light);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.column label {
+  margin-bottom: 10px;
+}
+
+.column input {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 20px; /* Adjust this for spacing between the components */
+}
+@media (max-width: 768px) {
+  .flexContainer {
+      flex-direction: column;
+      align-items: center;
+  }
+}

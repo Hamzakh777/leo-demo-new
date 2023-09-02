@@ -1,0 +1,58 @@
+.moduleWrapper {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 500px;
+    margin: 40px auto;
+}
+
+.cardTitle {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.interactionPanel {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.verifierContent {
+    margin: 20px 0;
+}
+
+.responseLabel {
+    margin-bottom: 15px;
+    display: block;
+}
+
+.responseDisplay {
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    min-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.button {
+    padding: 12px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.navButtons {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
